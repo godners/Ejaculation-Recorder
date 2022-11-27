@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetER" targetNamespace="http://tempuri.org/DataSetER.xsd" xmlns:mstns="http://tempuri.org/DataSetER.xsd" xmlns="http://tempuri.org/DataSetER.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetER" msdata:IsDataSet="true" msdata:Locale="" msprop:Generator_UserDSName="DataSetER" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetER">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="t_dictionary" msprop:Generator_RowEvHandlerName="t_dictionaryRowChangeEventHandler" msprop:Generator_RowDeletedName="t_dictionaryRowDeleted" msprop:Generator_RowDeletingName="t_dictionaryRowDeleting" msprop:Generator_RowEvArgName="t_dictionaryRowChangeEvent" msprop:Generator_TablePropName="t_dictionary" msprop:Generator_RowChangedName="t_dictionaryRowChanged" msprop:Generator_RowChangingName="t_dictionaryRowChanging" msprop:Generator_TableClassName="t_dictionaryDataTable" msprop:Generator_RowClassName="t_dictionaryRow" msprop:Generator_TableVarName="tablet_dictionary" msprop:Generator_UserTableName="t_dictionary">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="c_id" msprop:Generator_ColumnPropNameInRow="c_id" msprop:Generator_ColumnPropNameInTable="c_idColumn" msprop:Generator_ColumnVarNameInTable="columnc_id" msprop:Generator_UserColumnName="c_id" type="xs:int" />
+              <xs:element name="c_short" msprop:Generator_ColumnPropNameInRow="c_short" msprop:Generator_ColumnPropNameInTable="c_shortColumn" msprop:Generator_ColumnVarNameInTable="columnc_short" msprop:Generator_UserColumnName="c_short">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_dscp" msprop:Generator_ColumnPropNameInRow="c_dscp" msprop:Generator_ColumnPropNameInTable="c_dscpColumn" msprop:Generator_ColumnVarNameInTable="columnc_dscp" msprop:Generator_UserColumnName="c_dscp">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_class" msprop:Generator_ColumnPropNameInRow="c_class" msprop:Generator_ColumnPropNameInTable="c_classColumn" msprop:Generator_ColumnVarNameInTable="columnc_class" msprop:Generator_UserColumnName="c_class" type="xs:int" />
+              <xs:element name="c_display" msdata:ReadOnly="true" msdata:Expression="CONVERT(c_id, System.String)+'-'+c_dscp" msprop:Generator_ColumnPropNameInRow="c_display" msprop:Generator_ColumnPropNameInTable="c_displayColumn" msprop:Generator_ColumnVarNameInTable="columnc_display" msprop:Generator_UserColumnName="c_display" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="t_class" msprop:Generator_RowEvHandlerName="t_classRowChangeEventHandler" msprop:Generator_RowDeletedName="t_classRowDeleted" msprop:Generator_RowDeletingName="t_classRowDeleting" msprop:Generator_RowEvArgName="t_classRowChangeEvent" msprop:Generator_TablePropName="t_class" msprop:Generator_RowChangedName="t_classRowChanged" msprop:Generator_RowChangingName="t_classRowChanging" msprop:Generator_TableClassName="t_classDataTable" msprop:Generator_RowClassName="t_classRow" msprop:Generator_TableVarName="tablet_class" msprop:Generator_UserTableName="t_class">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="c_id" msprop:Generator_ColumnPropNameInRow="c_id" msprop:Generator_ColumnPropNameInTable="c_idColumn" msprop:Generator_ColumnVarNameInTable="columnc_id" msprop:Generator_UserColumnName="c_id" type="xs:int" />
+              <xs:element name="c_dscp" msprop:Generator_ColumnPropNameInRow="c_dscp" msprop:Generator_ColumnPropNameInTable="c_dscpColumn" msprop:Generator_ColumnVarNameInTable="columnc_dscp" msprop:Generator_UserColumnName="c_dscp">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_display" msdata:ReadOnly="true" msdata:Expression="CONVERT(c_id, System.String)+'-'+c_dscp" msprop:Generator_ColumnPropNameInRow="c_display" msprop:Generator_ColumnPropNameInTable="c_displayColumn" msprop:Generator_ColumnVarNameInTable="columnc_display" msprop:Generator_UserColumnName="c_display" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint2">
+      <xs:selector xpath=".//mstns:t_dictionary" />
+      <xs:field xpath="mstns:c_class" />
+    </xs:unique>
+    <xs:unique name="pk_dictionary" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:t_dictionary" />
+      <xs:field xpath="mstns:c_id" />
+    </xs:unique>
+    <xs:unique name="pk_class" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:t_class" />
+      <xs:field xpath="mstns:c_id" />
+    </xs:unique>
+    <xs:keyref name="FK_dictionary_class" refer="Constraint2" msprop:rel_Generator_UserParentTable="t_dictionary" msprop:rel_Generator_UserChildTable="t_class" msprop:rel_Generator_RelationVarName="relationFK_dictionary_class" msprop:rel_Generator_ChildPropName="Gett_classRows" msprop:rel_Generator_ParentPropName="t_dictionaryRow" msprop:rel_Generator_UserRelationName="FK_dictionary_class">
+      <xs:selector xpath=".//mstns:t_class" />
+      <xs:field xpath="mstns:c_id" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

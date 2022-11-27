@@ -14,7 +14,7 @@
     <PackageIcon>IconER.png</PackageIcon>
     <ApplicationIcon>IconER.ico</ApplicationIcon>
     <IsPublishable>False</IsPublishable>
-    <PackageLicenseFile>GPLv3.txt</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
@@ -23,10 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Compile Update="DataSetER.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSetER.xsd</DependentUpon>
+    </Compile>
     <Compile Update="ResourceER.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -42,11 +43,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="GPLv3.txt">
+    <None Update="DataSetER.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetER.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="IconER.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Update="IconER.png">
+    <None Update="LICENSE.txt">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
