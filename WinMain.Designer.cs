@@ -17,8 +17,9 @@
         { if (disposing && (components != null)) components.Dispose(); base.Dispose(disposing); }
 
         #region Windows Form Designer generated code
-        private readonly Font DefaultFont = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        private readonly Padding DefaultPadding = new System.Windows.Forms.Padding(4);
+        //private static readonly Font DefaultFont = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        //private static readonly Padding DefaultPadding = new System.Windows.Forms.Padding(4);
+
         /// <summary>
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.

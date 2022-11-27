@@ -1,3 +1,5 @@
+using System.Data;
+
 namespace ER
 {
     public partial class WinMain : Form
@@ -9,6 +11,7 @@ namespace ER
 
         private void WinMain_Load(object sender, EventArgs e)
         {
+            InitiateDatabase.Initiate("RenTY", "Godners8");
             
         }
 
