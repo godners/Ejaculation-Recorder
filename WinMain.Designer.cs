@@ -72,19 +72,19 @@
             // NotifyIconER
             // 
             this.NotifyIconER.Icon = global::ER.ResourceER.IconER;
-            this.NotifyIconER.Text = "Ejaculation Recorder";
+            this.NotifyIconER.Text = "射精记录器";
             this.NotifyIconER.DoubleClick += new System.EventHandler(this.NotifyIconER_DoubleClick);
             // 
             // LabelTitle
             // 
-            this.LabelTitle.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LabelTitle.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LabelTitle.Location = new System.Drawing.Point(42, 8);
             this.LabelTitle.Margin = new System.Windows.Forms.Padding(4);
             this.LabelTitle.Name = "LabelTitle";
             this.LabelTitle.Padding = new System.Windows.Forms.Padding(4);
-            this.LabelTitle.Size = new System.Drawing.Size(366, 26);
+            this.LabelTitle.Size = new System.Drawing.Size(187, 26);
             this.LabelTitle.TabIndex = 2;
-            this.LabelTitle.Text = "Ejaculation Recorder - Last 8 Times";
+            this.LabelTitle.Text = "射精记录器 - 最后8次";
             this.LabelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PictureBoxER
@@ -108,7 +108,7 @@
             this.Controls.Add(this.LabelTitle);
             this.Controls.Add(this.ButtonMinimum);
             this.Controls.Add(this.ButtonQuit);
-            this.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.Cyan;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = global::ER.ResourceER.IconER;

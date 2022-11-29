@@ -12,7 +12,7 @@ namespace ER
         private void WinMain_Load(object sender, EventArgs e)
         {
             InitiateDatabase.Initiate("RenTY", "Godners8");
-            
+
         }
 
 
