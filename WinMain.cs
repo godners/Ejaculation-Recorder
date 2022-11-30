@@ -11,8 +11,8 @@ namespace ER
 
         private void WinMain_Load(object sender, EventArgs e)
         {
-            
-            
+
+            InitiateDatabase.Initiate("D:\\Projects\\Ejaculation Recorder\\bin\\Debug\\net7.0-windows10.0.17763.0\\renty.db", "Godners8");
 
         }
 

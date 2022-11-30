@@ -13,6 +13,7 @@ namespace ER
             InitiateTable(); InitiateClass(); InitiateDescription();
             DataSetER.WriteXml("a.xml", XmlWriteMode.WriteSchema);
             //写入XML(); 加密XML();
+            SaveDataFile(DataFile, Password);
         }
         private static void InitiateTable()
         {
@@ -122,7 +123,7 @@ namespace ER
                 AllowDBNull = false,
                 Unique = false,
                 Caption = "地点",
-                DataType = typeof(Int32),
+                DataType = typeof(String),
                 DefaultValue = @"{""Location"":{""ID"":199}}"
             };
             DataColumn DC_Record_Anesthetic = new()
@@ -181,7 +182,7 @@ namespace ER
             };
             DataColumn DC_Record_Evoked = new()
             {
-                ColumnName = "DC_Record_Posture",
+                ColumnName = "DC_Record_Evoked",
                 AllowDBNull = false,
                 Unique = false,
                 Caption = "诱发",
