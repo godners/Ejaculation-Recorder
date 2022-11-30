@@ -1,23 +1,22 @@
 ﻿using System.Data;
+using System.Security.Cryptography;
+using System.Text;
+using static ER.Program;
 
 namespace ER
 {
     internal static class InitiateDatabase
     {
-#pragma warning disable CS8618
-        private static DataSet DataSetER;
-#pragma warning restore CS8618
-
-        internal static void Initiate(String Username, String Password)
+        internal static void Initiate(String DataFile, String Password)
         {
-            DataSetER = new() { DataSetName = $"DS_{Username}", CaseSensitive = false };
+            DataSetER = new() { DataSetName = $"DS_{DataFile}", CaseSensitive = false };
             InitiateTable(); InitiateClass(); InitiateDescription();
             DataSetER.WriteXml("a.xml", XmlWriteMode.WriteSchema);
             //写入XML(); 加密XML();
         }
         private static void InitiateTable()
         {
-            DataTable DT_Class = new("DT_Class");            
+            DataTable DT_Class = new("DT_Class");
             DataColumn DC_Class_ID = new()
             {
                 ColumnName = "DC_Class_ID",
@@ -25,7 +24,7 @@ namespace ER
                 Unique = true,
                 Caption = "序号",
                 DataType = typeof(Int32)
-            };            
+            };
             DataColumn DC_Class_Description = new()
             {
                 ColumnName = "DC_Class_Description",
@@ -33,8 +32,8 @@ namespace ER
                 MaxLength = 32,
                 Caption = "描述",
                 DataType = typeof(String),
-            };            
-            String Expression_Class_Display = 
+            };
+            String Expression_Class_Display =
                 "CONVERT(DC_Class_ID, System.String) + ' - ' + DC_Class_Description";
             DataColumn DC_Class_Display = new()
             {
@@ -73,7 +72,7 @@ namespace ER
                 MaxLength = 8,
                 Caption = "缩写",
                 DataType = typeof(String),
-            };            
+            };
             DataColumn DC_Dictionary_Description = new()
             {
                 ColumnName = "DC_Dictionary_Description",
@@ -81,8 +80,8 @@ namespace ER
                 MaxLength = 64,
                 Caption = "描述",
                 DataType = typeof(String)
-            };           
-            String Expression_Dictionary_Display = 
+            };
+            String Expression_Dictionary_Display =
                 "CONVERT(DC_Dictionary_ID, System.String) + ' - ' + DC_Dictionary_Description";
             DataColumn DC_Dictionary_Display = new()
             {
@@ -133,7 +132,7 @@ namespace ER
                 Unique = false,
                 Caption = "麻醉",
                 DataType = typeof(String),
-                DefaultValue= @"{""Anesthetic"":[{""ID"":200,""Position"":900}]}"
+                DefaultValue = @"{""Anesthetic"":[{""ID"":200,""Position"":900}]}"
             };
             DataColumn DC_Record_Aphrodisiac = new()
             {
@@ -343,9 +342,36 @@ namespace ER
             DataSetER.Tables["DT_Dictionary"].Rows.Add(DR_Description);
 #pragma warning restore CS8602
         }
+        internal static void SaveDataFile(String DataFile, String Password)
+        {
+            DataSetER.WriteXml($"{DataFile}.temp", XmlWriteMode.WriteSchema);
+            String ClearXML = File.ReadAllText($"{DataFile}.temp");
 
-
-
-
+            Byte[] ByteXML = Encoding.UTF8.GetBytes(ClearXML);
+            Byte[] ByteKey = Encoding.UTF8.GetBytes(HASH(Password));
+            for (Int32 i = 0; i < ByteXML.Length; i++)
+                ByteXML[i] ^= ByteKey[i % ByteKey.Length];
+            File.WriteAllText(DataFile, Convert.ToBase64String(ByteXML));
+        }
+        internal static void LoadDataFile(String DataFile, String Password)
+        {
+            String Base64XML = File.ReadAllText(DataFile);
+            Byte[] CipherXML = Convert.FromBase64String(Base64XML);
+            Byte[] ByteKey = Encoding.UTF8.GetBytes(HASH(Password));
+            for (Int32 i = 0; i < CipherXML.Length; i++)
+                CipherXML[i] ^= ByteKey[i % ByteKey.Length];
+            String ClearXML = Encoding.UTF8.GetString(CipherXML, 0, CipherXML.Length);
+            File.WriteAllText($"{DataFile}.temp", ClearXML);
+            DataSetER.ReadXml($"{DataFile}.temp", XmlReadMode.ReadSchema);
+        }
+        private static String HASH(String ClearText)
+        {
+            Byte[] Buffer = Encoding.UTF8.GetBytes(ClearText);
+            Byte[] Data = SHA256.HashData(Buffer);
+            StringBuilder Value = new();
+            foreach (Byte Word in Data)
+                Value.Append(Word.ToString("X2"));
+            return Value.ToString();
+        }
     }
 }
